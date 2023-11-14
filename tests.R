@@ -10,9 +10,7 @@ cp_test=function(data, dep, indep){
   result0=aov(data[[numeric_var]] ~ data[[cate_var]])
   result1=unlist(summary(result0))[9]
   if (result1 < 0.05) {
-    if (cate_var == indep ) {
-      return(indep)
-    }else{return(dep)}
+    return(indep)
   }else{NULL}
 }
 
