@@ -9,6 +9,7 @@ tests <- function(vars, y, data, sig = 0.05) {
   return (significant_vars)
 }
 
+
 test <- function(var, y, data) {
   is_numeric_var <- is_numeric(var)
   is_numeric_y <- is_numeric(y)
@@ -27,10 +28,11 @@ test.QQ <- function(y, x) {
 }
 
 #categorical to quantitative--------
-cp_test=function(data, dep, indep){
+cp_test=function(data, dep, indep, sig=0.05){
   # data (dataframe) 
   # dep (str): dependent variable
   # indep (str): independent variable
+
   numeric_var <- ifelse(is.numeric(data[dep]), dep, indep)
   cate_var <- ifelse(is.numeric(data[dep]), indep, dep)
   result0 <- aov(data[[numeric_var]] ~ data[[cate_var]])
