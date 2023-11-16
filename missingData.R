@@ -3,14 +3,14 @@ pacman::p_load(naniar)
 
 # returns vectors of column names that have less than 40% of the data missing
 missing.data <- function(data, var.names, threshold = 0.4) {
-    darwinism <- c()
+    final.vars <- c()
     for (var in var.names) {
-        miss <- pct_miss(data[[var]])/100
+      miss <- sum(is.na(data[[var]]))/length(data)
         if (miss < threshold) {
-            darwinism <- c(darwinism, var)
+            final.vars <- c(final.vars, var)
         }
     }
-    return(darwinism)
+    return(final.vars)
 }
 
 #example
