@@ -6,9 +6,10 @@ library(ggplot2)
 data(mpg)
 data <- mpg
 formula <- hwy ~ cty + displ
+formula <- hwy ~ .
 threshold = 0.4
 
-screen <- function(formula, data, threshold = 0.4) {
+screen <- function(formula, data, sig = 0.05, threshold = 0.4) {
   
   # Stop messages -----------------------------------------------------------
   
@@ -18,7 +19,7 @@ screen <- function(formula, data, threshold = 0.4) {
   }
   
   # Stop message for formula
-  if (!is.formula(formula)) {
+  if (!inherits(formula, "formula")) {
     stop("Please enter a valid formula")
   }
   
@@ -27,6 +28,11 @@ screen <- function(formula, data, threshold = 0.4) {
   # Extracting variables from formula
   y <- as.character(formula[[2]])
   vars <- all.vars(formula)
+  
+  # If user wants all variables
+  if ("." == vars[2]) {
+    vars <- names(data)
+  }
   
   # Missing data screen -----------------------------------------------------
   
@@ -39,7 +45,7 @@ screen <- function(formula, data, threshold = 0.4) {
   
   # Constant variable screen ------------------------------------------------
   
-  vars <- constant(vars, data)
+  vars <- variance_check(vars, data)
   
   # If y variable does not pass constant screen
   if (!(y %in% vars)) {
@@ -51,7 +57,7 @@ screen <- function(formula, data, threshold = 0.4) {
   # Remove y variable from vars
   vars <- vars[vars != y]
   
-  vars <- tests(vars, y, data)
+  vars <- tests(vars, y, data, sig = sig)
 
   # Output ------------------------------------------------------------------
   
