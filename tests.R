@@ -1,5 +1,13 @@
 print("this is the file that'll run tests")
 
+
+
+
+test.QQ <- function(y, x) {
+    cor <- cor.test(x, y)
+    return(cor$p.value)
+}
+
 #categorical to quantitative--------
 cp_test=function(data, dep, indep){
   # data (dataframe) 
@@ -19,3 +27,4 @@ data("mtcars")
 mtcars$cyl=as.character(mtcars$cyl)
 x=cp_test(mtcars, 'mpg', 'cyl')
 print(x)
+
