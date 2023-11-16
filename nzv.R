@@ -5,7 +5,12 @@ variance_check <- function(nameVec, data) {
   
   badVars <- const_check(variance_df)
   
+  if(length(badVars) == 0){
+    return(nameVec)
+  }
+  
   good_df <- subset(variance_df, select = -badVars)
+
   
   good_vars <- colnames(good_df)
   return(good_vars)
