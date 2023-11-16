@@ -2,14 +2,13 @@ print("this is the file that'll run tests")
 
 
 
-
 test.QQ <- function(y, x) {
     cor <- cor.test(x, y)
     return(cor$p.value)
 }
 
 #categorical to quantitative--------
-cp_test=function(data, dep, indep){
+cp_test=function(data, dep, indep, sig=0.05){
   # data (dataframe) 
   # dep (str): dependent variable
   # indep (str): independent variable
@@ -17,9 +16,7 @@ cp_test=function(data, dep, indep){
   cate_var=ifelse(is.numeric(data[dep]), indep, dep)
   result0=aov(data[[numeric_var]] ~ data[[cate_var]])
   result1=unlist(summary(result0))[9]
-  if (result1 < 0.05) {
-    return(indep)
-  }else{NULL}
+  return(result1)
 }
 
 #example
