@@ -47,13 +47,13 @@ screen <- function(formula, data, threshold = 0.4) {
   }
 
   # Statistical tests -------------------------------------------------------
-
-  vars <- tests(vars, data)
-
-  # Output ------------------------------------------------------------------
   
   # Remove y variable from vars
   vars <- vars[vars != y]
+  
+  vars <- tests(vars, y, data)
+
+  # Output ------------------------------------------------------------------
   
   return(vars)
   
