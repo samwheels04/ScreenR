@@ -11,8 +11,8 @@ tests <- function(vars, y, data, sig = 0.05) {
 
 
 test <- function(var, y, data) {
-  is_numeric_var <- is_numeric(var)
-  is_numeric_y <- is_numeric(y)
+  is_numeric_var <- is.numeric(var)
+  is_numeric_y <- is.numeric(y)
   if (is_numeric_var & is_numeric_y) {
     
   } else if (!is_numeric_var & !is_numeric_y) {
