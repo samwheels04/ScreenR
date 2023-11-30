@@ -3,5 +3,9 @@
 .RData
 .Ruserdata
 .gitignore
+<<<<<<< HEAD
+ScreenR.Rproj
+=======
 ScreenR.Rproj
 
+>>>>>>> c3276fa5c2eaabac5f8789ead6c674eab0297ad4
