@@ -46,7 +46,7 @@ test_CC <- function(var, y) {
 
 # examples for individual tests
 
-data("starwars")
-test(starwars$height, starwars$mass)
-test(starwars$sex, starwars$height)
-test(starwars$sex, starwars$gender)
+# data("starwars")
+# test(starwars$height, starwars$mass)
+# test(starwars$sex, starwars$height)
+# test(starwars$sex, starwars$gender)
